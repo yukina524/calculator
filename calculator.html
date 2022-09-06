@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>mission5-1_dentaku</title>
+    <style>
+        .center {
+            text-align: center;
+        }
+
+        .text {
+            font-size: 20px;
+            font-family: 'ヒラギノ丸ゴ Pro W4';
+        }
+
+        .title {
+            font-size: 50px;
+            text-align: center;
+            background: gold;
+            margin: 0px 0px 30px 0px;
+            font-family: 'ヒラギノ丸ゴ Pro W4';
+            font-weight: bold;
+        }
+
+        .botton_num {
+            font-size: 80px;
+            background: gold;
+            padding: 10px 20px;
+            font-family: 'ヒラギノ丸ゴ Pro W4';
+        }
+
+        .botton_kigou {
+            font-size: 80px;
+            background: orange;
+            padding: 10px 15px;
+            font-family: 'ヒラギノ丸ゴ Pro W4';
+        }
+
+        .botton_wa {
+            font-size: 80px;
+            background: orange;
+            padding: 10px 20px;
+            font-family: 'ヒラギノ丸ゴ Pro W4';
+        }
+
+        .botton_num0 {
+            font-size: 80px;
+            background: gold;
+            padding: 10px 82px;
+            font-family: 'ヒラギノ丸ゴ Pro W4';
+        }
+
+        .botton_clear {
+            font-size: 60px;
+            background: orange;
+            padding: 15px 15px;
+            margin: 0px 370px 5px 0px;
+            font-family: 'ヒラギノ丸ゴ Pro W4';
+        }
+
+        .answer {
+            font-size: 80px;
+            padding: 0px;
+            font-family: 'ヒラギノ丸ゴ Pro W4';
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">電卓</h1>
+    <div class="text">計算したい式を入力してください！</div>
+    <hr>
+    <div id="inputnum" class="answer">0</div>
+    <hr>
+    <div id="inputnum2" class="text">0</div>
+    <hr>
+    <div class="center">
+        <button onclick="clearnum()" class="botton_clear">AC</button><br>
+        <button onclick="num7()" class="botton_num">７</button><button onclick="num8()"
+            class="botton_num">８</button><button onclick="num9()" class="botton_num">９</button> <button
+            onclick="numwaru()" class="botton_kigou">➗</button><br>
+
+        <button onclick="num4()" class="botton_num">４</button><button onclick="num5()"
+            class="botton_num">５</button><button onclick="num6()" class="botton_num">６</button> <button
+            onclick="numkake()" class="botton_kigou">✖️</button><br>
+
+        <button onclick="num1()" class="botton_num">１</button><button onclick="num2()"
+            class="botton_num">２</button><button onclick="num3()" class="botton_num">３</button> <button
+            onclick="numhiku()" class="botton_kigou">➖</button><br>
+        <button onclick="num0()" class="botton_num0">０</button><button onclick="calculate()"
+            class="botton_wa">＝</button>
+        <button onclick="numtasu()" class="botton_kigou">➕</button><br>
+    </div>
+
+
+
+    <script src="mission5-1_dentaku.js"></script>
+</body>
+
+</html>
