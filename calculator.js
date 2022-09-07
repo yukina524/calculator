@@ -1,6 +1,7 @@
 var array1 = [];
 var array2 = [];
 var count = 0; //演算記号の個数カウント用
+var count_error = 0; //エラーがあるかどうかの判定用
 
 //各数字・演算記号ボタン
 function num0() {
@@ -95,8 +96,6 @@ function numwaru() {
     if (count >= 2) {
         calculate();
         array1.push('÷');
-        clear();
-        show(array1, array2);
     }
 }
 
@@ -110,8 +109,6 @@ function numkake() {
     if (count >= 2) {
         calculate();
         array1.push('×');
-        clear();
-        show(array1, array2);
     }
 }
 
@@ -125,8 +122,6 @@ function numhiku() {
     if (count >= 2) {
         calculate();
         array1.push('-');
-        clear();
-        show(array1, array2);
     }
 }
 
@@ -140,11 +135,8 @@ function numtasu() {
     if (count >= 2) {
         calculate();
         array1.push('+');
-        clear();
-        show(array1, array2);
     }
 }
-
 
 
 //表示・削除用関数
@@ -163,6 +155,7 @@ function show(array, array_2) {
 
 var x = document.getElementById("inputnum");
 var y = document.getElementById("inputnum2");
+var z = document.getElementById("text");
 
 function clear() {
     x.innerHTML = "";
@@ -178,6 +171,8 @@ function clearnum() {
     x.innerHTML = "0";
     y.innerHTML = "0";
     count = 0;
+    count_error = 0;
+    z.innerHTML = "計算したい式を入力してください！";
 }
 
 
@@ -220,12 +215,30 @@ function calculate() {
             array1.shift();
             console.log(array1);
             console.log(arraynum2);
+        } else if (j == 0) {
+            console.log('moji2_error');
+            arraykigou.push(array1[0]);
+            array1.shift();
+            arraykigou.shift();
+            console.log(array1);
+            console.log(arraynum2);
+            console.log(arraykigou);
+            break;
         } else {
             console.log('moji');
             array1.shift();
             console.log(array1);
             break;
         }
+    }
+
+    if (arraynum1.length == 0) {
+        number1 == null;
+        console.log(number1);
+    }
+    if (arraynum2.length == 0) {
+        number2 == null;
+        console.log(number2);
     }
 
     //1つ目の数字作る
@@ -242,7 +255,11 @@ function calculate() {
     }
 
     //1つ目2つ目の数字を使って計算する
-    if (arraykigou[0] == '+') {
+    if (arraynum1.length == 0 || arraynum2.length == 0) {
+        console.log('数字が空っぽです')
+        number3 = 'エラー！';
+        count_error = count_error + 1;
+    } else if (arraykigou[0] == '+') {
         number3 = number1 + number2;
     } else if (arraykigou[0] == '-') {
         number3 = number1 - number2;
@@ -253,16 +270,23 @@ function calculate() {
     }
 
     if (number3 == Infinity) {
-        number3 = 'エラー！最初からやり直してください！'
+        number3 = 'エラー！'
+        count_error = count_error + 1;
     }
     console.log(number3);
 
-    //計算全部終わった後の処理
+    //演算が全て終わった後の処理
     count = 1;
     array1.push(number3);
     console.log(array1);
     console.log(array2);
     clear();
     show(array1, array2);
+    if (count_error >= 1) {
+        z.innerHTML = "";
+        var html3 = '';
+        html3 = html3 + '「AC」を押して最初からやり直してください！'
+        document.getElementById('text').insertAdjacentHTML('beforeend', html3);
+    }
 }
 
